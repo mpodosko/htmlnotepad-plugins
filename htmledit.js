@@ -1,4 +1,4 @@
-pluginnames.push('HTML Editor');
+pluginnames.push('HTML Preview');
 //localStorage.clear();alert();
 
 settings_main.insertAdjacentHTML('beforeend', `<br><input type="checkbox" id="enableHtmlEditMode"><label for="enableHtmlEditMode">enable HTML edit mode</label><p><b><span style="width:8px;display:inline-block;"></span>layout:</b></p><span style="width:8px;display:inline-block;"></span><input type="radio" name="HTMLEditorLayout" id="HTMLEditorLayoutHorizontal" class="custom-radio"><label for="HTMLEditorLayoutHorizontal">horizontal</label><br><span style="width:8px;display:inline-block;"></span><input type="radio" name="HTMLEditorLayout" id="HTMLEditorLayoutVertical" class="custom-radio"><label for="HTMLEditorLayoutVertical">vertical</label>`);
