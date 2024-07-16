@@ -1,7 +1,7 @@
 [
 {
 "name":"RandomText",
-"description":"Writes random symbols to the textarea",
+"description":"Writes random symbols to the textarea once the specified amount of time",
 "url":"https://raw.githubusercontent.com/mpodosko/htmlnotepad-plugins/main/randomtext.js"
 },
 {
