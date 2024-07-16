@@ -1,0 +1,17 @@
+[
+{
+"name":"RandomText",
+"description":"Writes random symbols to the textarea",
+"url":"https://raw.githubusercontent.com/mpodosko/htmlnotepad-plugins/main/randomtext.js"
+},
+{
+"name":"CubeSaver",
+"description":"Screensaver with flying cubes",
+"url":"https://raw.githubusercontent.com/mpodosko/htmlnotepad-plugins/main/cubesaver.js"
+},
+{
+"name":"HTML Preview",
+"description":"Splits screen and adds HTML code preview frame",
+"url":"https://raw.githubusercontent.com/mpodosko/htmlnotepad-plugins/main/htmledit.js"
+}
+]
