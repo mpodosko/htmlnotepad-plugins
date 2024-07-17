@@ -1,4 +1,4 @@
-if(Number(versionString.slice(0,3)) > 1.5) {
+try{if(Number(versionString.slice(0,3)) > 1.5) {
   pluginnames.push('Transitions');  
 }
 document.body.innerHTML += '<style id="transitions_style"></style>';
@@ -16,3 +16,4 @@ transitions_checkbox.oninput = () => {
 if(localStorage.getItem('transitions') == 'true') {
   transitions_style.innerHTML = '*{transition:all 0.25s !important;}';
 }
+   }catch(e){alert(e)}
