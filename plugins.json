@@ -13,5 +13,10 @@
 "name":"HTML Preview",
 "description":"Splits screen and adds HTML code preview frame",
 "url":"https://api.github.com/repos/mpodosko/htmlnotepad-plugins/contents/htmledit.js"
+},
+{
+"name":"Transitions",
+"description":"Adds transitions",
+"url":"https://api.github.com/repos/mpodosko/htmlnotepad-plugins/contents/transitions.js"
 }
 ]
