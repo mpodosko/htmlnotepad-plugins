@@ -1,4 +1,6 @@
-
+if(Number(versionString.slice(0,3)) > 1.5) {
+  pluginnames.push('RandomText');  
+}
 var randomTextStyle = document.createElement('style');
 randomTextStyle.innerHTML = `
 #randomtextmenulabel:hover+#randomtextmenu {
