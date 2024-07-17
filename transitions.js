@@ -15,5 +15,6 @@ transitions_checkbox.oninput = () => {
 
 if(localStorage.getItem('transitions') == 'true') {
   transitions_style.innerHTML = '*{transition:all 0.25s !important;}';
+  transitions_checkbox.checked = true;
 }
    }catch(e){alert(e)}
