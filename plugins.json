@@ -16,7 +16,7 @@
 },
 {
 "name":"Transitions",
-"description":"Adds transitions",
+"description":"Adds transitions. Try to switch themes, and you will see how does it work",
 "url":"https://api.github.com/repos/mpodosko/htmlnotepad-plugins/contents/transitions.js"
 }
 ]
