@@ -89,7 +89,7 @@ function atc_interval() {
   if(minutesFrom < minutesTo) {
     if(timeMinutes >= minutesFrom && timeMinutes < minutesTo) {
       document.documentElement.setAttribute('theme', atc_theme2);
-      if(atc_theme2 == 'custom') {customTheme.checked = true} else {document.querySelector(`#${atc_theme2}_theme`).checked=true
+      if(atc_theme2 == 'custom') {customTheme.checked = true} else {document.querySelector(`#${atc_theme2}_theme`).checked=true}
     } else if(timeMinutes < minutesFrom || timeMinutes >= minutesTo) {
       document.documentElement.setAttribute('theme', atc_theme1);
       if(atc_theme1 == 'custom') {customTheme.checked = true} else {document.querySelector(`#${atc_theme1}_theme`).checked=true}
@@ -97,7 +97,7 @@ function atc_interval() {
   } else if(minutesFrom > minutesTo) { // ok night mode
     if(timeMinutes >= minutesFrom || timeMinutes < minutesTo) {
       document.documentElement.setAttribute('theme', atc_theme2);
-      if(atc_theme2 == 'custom') {customTheme.checked = true} else {document.querySelector(`#${atc_theme2}_theme`).checked=true
+      if(atc_theme2 == 'custom') {customTheme.checked = true} else {document.querySelector(`#${atc_theme2}_theme`).checked=true}
     } else if(timeMinutes < minutesFrom && timeMinutes >= minutesTo) {
       document.documentElement.setAttribute('theme', atc_theme1);
       if(atc_theme1 == 'custom') {customTheme.checked = true} else {document.querySelector(`#${atc_theme1}_theme`).checked=true}
