@@ -9,6 +9,24 @@ settings_main.insertAdjacentHTML('beforeend',`
 Начало: <input type="time" style="width:100px" id="atc_night_from"><br>
 Конец:  <input type="time" style="width:100px" id="atc_night_to"><br><br>
 `);
+
+     /*
+   inputs           localstorage
+   
+ themeLight              '0'
+ themeDark               '1'
+ themeDarkcyan           '2'
+ themePurpleblue         '3'
+ themeNeon               '4'
+ customTheme           'custom'     (idk why)
+          
+  __________________
+ |   ___            |
+ | |  _  |     _ _  |
+ |/| |_|_|____|_| \_|
+|/0__|_o_°__°_o_|__0\|     tape
+      
+     */
 var atc_int;
 if(localStorage.getItem('atc_theme1') == null) {
   window.atc_theme1 = 'light';
@@ -71,14 +89,18 @@ function atc_interval() {
   if(minutesFrom < minutesTo) {
     if(timeMinutes >= minutesFrom && timeMinutes < minutesTo) {
       document.documentElement.setAttribute('theme', atc_theme2);
+      if(atc_theme2 == 'custom') {customTheme.checked = true} else {document.querySelector(`#${atc_theme2}_theme`).checked=true
     } else if(timeMinutes < minutesFrom || timeMinutes >= minutesTo) {
       document.documentElement.setAttribute('theme', atc_theme1);
+      if(atc_theme1 == 'custom') {customTheme.checked = true} else {document.querySelector(`#${atc_theme1}_theme`).checked=true}
     }
   } else if(minutesFrom > minutesTo) { // ok night mode
     if(timeMinutes >= minutesFrom || timeMinutes < minutesTo) {
       document.documentElement.setAttribute('theme', atc_theme2);
+      if(atc_theme2 == 'custom') {customTheme.checked = true} else {document.querySelector(`#${atc_theme2}_theme`).checked=true
     } else if(timeMinutes < minutesFrom && timeMinutes >= minutesTo) {
       document.documentElement.setAttribute('theme', atc_theme1);
+      if(atc_theme1 == 'custom') {customTheme.checked = true} else {document.querySelector(`#${atc_theme1}_theme`).checked=true}
     }
   }
   //if(d.getHours() >= timefrom[0] && d.getMinutes() >= timefrom[1] && document.documentElement.getAttribute('theme') != atc_theme2) {
