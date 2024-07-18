@@ -31,6 +31,12 @@ atc_save2.onclick = () => {
   atc_theme2 = document.documentElement.getAttribute('theme');
   localStorage.setItem('atc_theme2', atc_theme2);
 }
+atc_night_from.onchange = () => {
+  localStorage.setItem('atc_timefrom', atc_night_from.value);
+}
+atc_night_to.onchange = () => {
+  localStorage.setItem('atc_timeto', atc_night_to.value);
+}
 
 function atc_interval() {
   let d = new Date();
