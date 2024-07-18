@@ -23,6 +23,5 @@
 "name":"Auto theme changer",
 "description":"Automatically switches theme in the specified period of time, e. g. enables dark theme from 22:00 to 8:00",
 "url":"https://api.github.com/repos/mpodosko/htmlnotepad-plugins/contents/autothemes.js"
-},
-
+}
 ]
