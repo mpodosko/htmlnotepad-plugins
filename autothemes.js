@@ -63,10 +63,27 @@ function atc_interval() {
   let d = new Date();
   let timefrom = [Number(atc_night_from.value.slice(0,2)), Number(atc_night_from.value.slice(3,5))];
   let timeto = [Number(atc_night_to.value.slice(0,2)), Number(atc_night_to.value.slice(3,5))];
-  // let timeString = `${(d.getHours() < 10 ? '0' : '') + d.getHours()}:${(d.getMinutes() < 10 ? '0' : '') + d.getMinutes()}`;
-  if(d.getHours() >= timefrom[0] && d.getMinutes() >= timefrom[1] && document.documentElement.getAttribute('theme') != atc_theme2) {
-    document.documentElement.setAttribute('theme', atc_theme2);
-  } else if(d.getHours() >= timeto[0] && d.getMinutes() >= timeto[1] && document.documentElement.getAttribute('theme') != atc_theme1) {
-    document.documentElement.setAttribute('theme', atc_theme1);
+  //let timeString = `${(d.getHours() < 10 ? '0' : '') + d.getHours()}:${(d.getMinutes() < 10 ? '0' : '') + d.getMinutes()}`;
+
+  let timeMinutes = d.getHours()*60+d.getMinutes();
+  let minutesFrom = timefrom[0]*60+timefrom[1];
+  let minutesTo = timeto[0]*60+timeto[1];
+  if(minutesFrom < minutesTo) {
+    if(timeMinutes >= minutesFrom && timeMinutes < minutesTo) {
+      document.documentElement.setAttribute('theme', atc_theme2);
+    } else if(timeMinutes < minutesFrom || timeMinutes >= minutesTo) {
+      document.documentElement.setAttribute('theme', atc_theme1);
+    }
+  } else if(minutesFrom > minutesTo) { // ok night mode
+    if(timeMinutes >= minutesFrom || timeMinutes < minutesTo) {
+      document.documentElement.setAttribute('theme', atc_theme2);
+    } else if(timeMinutes < minutesFrom && timeMinutes >= minutesTo) {
+      document.documentElement.setAttribute('theme', atc_theme1);
+    }
   }
+  //if(d.getHours() >= timefrom[0] && d.getMinutes() >= timefrom[1] && document.documentElement.getAttribute('theme') != atc_theme2) {
+  //  document.documentElement.setAttribute('theme', atc_theme2);
+  //} else if(d.getHours() >= timeto[0] && d.getMinutes() >= timeto[1] && document.documentElement.getAttribute('theme') != atc_theme1) {
+  //  document.documentElement.setAttribute('theme', atc_theme1);
+  //}
 }
