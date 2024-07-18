@@ -9,18 +9,39 @@ settings_main.insertAdjacentHTML('beforeend',`
 Начало: <input type="time" style="width:100px" id="atc_night_from"><br>
 Конец:  <input type="time" style="width:100px" id="atc_night_to"><br><br>
 `);
-
+var atc_int;
 if(localStorage.getItem('atc_theme1') == null) {
   window.atc_theme1 = 'light';
+} else {
+  window.atc_theme1 = localStorage.getItem('atc_theme1');
 }
 if(localStorage.getItem('atc_theme2') == null) {
   window.atc_theme2 = 'dark';
+} else {
+  window.atc_theme2 = localStorage.getItem('atc_theme2');
 }
 if(localStorage.getItem('atc_timefrom') == null) {
   atc_night_from.value = '22:00'
+} else {
+  atc_night_from.value = localStorage.getItem('atc_timefrom');
 }
 if(localStorage.getItem('atc_timeto') == null) {
   atc_night_to.value = '08:00';
+} else {
+  atc_night_to.value = localStorage.getItem('atc_timeto');
+}
+if(localStorage.getItem('atc_on') == 'true') {
+  atc_checkbox.checked = true;
+  atc_int = setInterval(atc_interval, 1000);
+}
+atc_checkbox.oninput = () => {
+  if(atc_checkbox.checked) {
+    atc_int = setInterval(atc_interval, 1000);
+    localStorage.setItem('atc_on', 'true');
+  } else {
+    clearInterval(atc_int);
+    localStorage.setItem('atc_on', 'false');
+  }
 }
 
 atc_save1.onclick = () => {
