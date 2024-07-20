@@ -1,4 +1,4 @@
-try {if(Number(versionString.slice(0,3)) > 1.5) {
+try {window.onload = ()=>{if(Number(versionString.slice(0,3)) > 1.5) {
   pluginnames.push('Auto theme changer');  
 }
 settings_main.insertAdjacentHTML('beforeend',`
@@ -108,4 +108,4 @@ function atc_interval() {
   //} else if(d.getHours() >= timeto[0] && d.getMinutes() >= timeto[1] && document.documentElement.getAttribute('theme') != atc_theme1) {
   //  document.documentElement.setAttribute('theme', atc_theme1);
   //}
-}}catch(err){alert(err)}
+}}}catch(err){alert(err)}
