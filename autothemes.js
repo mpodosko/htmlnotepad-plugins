@@ -108,4 +108,4 @@ function atc_interval() {
   //} else if(d.getHours() >= timeto[0] && d.getMinutes() >= timeto[1] && document.documentElement.getAttribute('theme') != atc_theme1) {
   //  document.documentElement.setAttribute('theme', atc_theme1);
   //}
-}}}catch(err){alert(err)}
+}};if(document.readyState == 'complete'){window.onload()}}catch(err){alert(err)}
