@@ -258,9 +258,9 @@ function utf8_to_b64(str) {
   //декодирование строки из base-64 в Unicode
   function b64_to_utf8(str) {
     return decodeURIComponent(escape(atob(str)));
-  }
+  };
+iframeDocument = previewiframe.contentDocument || previewiframe.contentWindow.document || previewiframe.document;
 function updateHTML () {
-    iframeDocument = previewiframe.contentDocument || previewiframe.contentWindow.document || previewiframe.document;
     if(HTMLEditorDataURL.checked) {
         previewiframe.src = `data:text/html;base64,${utf8_to_b64(textarea.value)}`;
     } else if(HTMLEditorOuterHTML.checked) {
@@ -269,4 +269,5 @@ function updateHTML () {
     }
     
 }
+
 
