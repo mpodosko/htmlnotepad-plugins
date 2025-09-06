@@ -1,7 +1,7 @@
 pluginnames.push('HTML Preview');
 //localStorage.clear();alert();
 
-settings_main.insertAdjacentHTML('beforeend', `<br><input type="checkbox" id="enableHtmlEditMode"><label for="enableHtmlEditMode">enable HTML edit mode</label><p><b><span style="width:8px;display:inline-block;"></span>layout:</b></p><span style="width:8px;display:inline-block;"></span><input type="radio" name="HTMLEditorLayout" id="HTMLEditorLayoutHorizontal" class="custom-radio"><label for="HTMLEditorLayoutHorizontal">horizontal</label><br><span style="width:8px;display:inline-block;"></span><input type="radio" name="HTMLEditorLayout" id="HTMLEditorLayoutVertical" class="custom-radio"><label for="HTMLEditorLayoutVertical">vertical</label>`);
+settings_main.insertAdjacentHTML('beforeend', `<br><input type="checkbox" id="enableHtmlEditMode"><label for="enableHtmlEditMode">enable HTML edit mode</label><p><b><span style="width:8px;display:inline-block;"></span>layout:</b></p><span style="width:8px;display:inline-block;"></span><input type="radio" name="HTMLEditorLayout" id="HTMLEditorLayoutHorizontal" class="custom-radio"><label for="HTMLEditorLayoutHorizontal">horizontal</label><br><span style="width:8px;display:inline-block;"></span><input type="radio" name="HTMLEditorLayout" id="HTMLEditorLayoutVertical" class="custom-radio"><label for="HTMLEditorLayoutVertical">vertical</label><p><b><span style="width:8px;display:inline-block;"></span>preview generation method:</b></p><span style="width:8px;display:inline-block;"></span><input type="radio" name="HTMLEditorPreviewMethod" id="HTMLEditorDataURL" class="custom-radio"><label for="HTMLEditorDataURL">Data URL</label><br><span style="width:8px;display:inline-block;"></span><input type="radio" name="HTMLEditorPreviewMethod" id="HTMLEditorOuterHTML" class="custom-radio"><label for="HTMLEditorOuterHTML">outerHTML</label>`);
 var previewiframe;
 /* fscreen.oninput = () => {
     textarea.style.width = 'calc(100vw - 24px)';
@@ -240,6 +240,17 @@ if(localStorage.getItem('htmleditlayout') == null) {
         };
     }
 }
+
+if(localStorage.getItem('htmleditPreviewMethod') == null) {localStorage.setItem('htmleditPreviewMethod', 'dataurl')};
+if(localStorage.getItem('htmleditPreviewMethod') == 'dataurl') {HTMLEditorDataURL.checked = true}
+else if(localStorage.getItem('htmleditPreviewMethod') == 'outerhtml') {HTMLEditorOuterHTML.checked = true};
+HTMLEditorDataURL.oninput = () => {
+localStorage.setItem('htmleditPreviewMethod', 'dataurl');
+};
+HTMLEditorOuterHTML.oninput = () => {
+localStorage.setItem('htmleditPreviewMethod', 'outerhtml');
+};
+
 //кодирование строки Unicode в base-64
 function utf8_to_b64(str) {
     return btoa(unescape(encodeURIComponent(str)));
@@ -249,5 +260,13 @@ function utf8_to_b64(str) {
     return decodeURIComponent(escape(atob(str)));
   }
 function updateHTML () {
-    previewiframe.src = `data:text/html;base64,${utf8_to_b64(textarea.value)}`;
+    iframeDocument = previewiframe.contentDocument || previewiframe.contentWindow.document || previewiframe.document;
+    if(HTMLEditorDataURL.checked) {
+        previewiframe.src = `data:text/html;base64,${utf8_to_b64(textarea.value)}`;
+    } else if(HTMLEditorOuterHTML.checked) {
+        previewiframe.src = 'about:blank';
+        iframeDocument.documentElement.outerHTML = textarea.value;
+    }
+    
 }
+
